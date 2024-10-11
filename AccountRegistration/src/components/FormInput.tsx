@@ -1,63 +1,58 @@
 import React from 'react';
-import { View, TextInput, Text, StyleSheet } from 'react-native';
+import { View, TextInput, Text, StyleSheet, ImageSourcePropType, Image } from 'react-native';
 // import Icon from 'react-native-vector-icons/FontAwesome';
 
 interface FormInputProps {
-  label: string;
   value: string;
   onChangeText: (text: string) => void;
-  iconName: string;
+  iconSource: ImageSourcePropType ;
   placeholder?: string;
   secureTextEntry?: boolean;
 }
 
 export const FormInput: React.FC<FormInputProps> = ({
-  label,
   value,
   onChangeText,
-  iconName,
+  iconSource,
   placeholder,
   secureTextEntry = false,
 }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>{label}</Text>
-      <View style={styles.inputContainer}>
-        {/* <Icon name={iconName} size={20} style={styles.icon} /> */}
-        <TextInput
-          style={styles.input}
-          value={value}
-          onChangeText={onChangeText}
-          placeholder={placeholder}
-          secureTextEntry={secureTextEntry}
-        />
-      </View>
-    </View>
+     <Image source={iconSource} style={styles.icon} />
+     <TextInput
+       style={styles.input}
+       placeholderTextColor="#DADADA"
+       value={value}
+       onChangeText={onChangeText}
+       placeholder={placeholder} // Pass down all the props like placeholder, value, onChangeText, etc.
+     />
+   </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 15,
-  },
-  label: {
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderWidth: 1,
-    borderColor: '#DADADA',
-    borderRadius: 8,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
+    width: 327, // Fixed width
+    height: 50, // Fixed height
+    marginVertical:12,
+    marginHorizontal: 24, // Margins on left and right
+    borderRadius: 10, // Rounded corners
+    borderWidth: 1, // Border thickness
+    borderColor: '#DADADA', // Border color
+    backgroundColor: '#fff', // Background color of the input field
+    paddingHorizontal: 20, // Padding inside the container
   },
   icon: {
-    marginRight: 10,
+    width: 15, // Adjust icon size as needed
+    height: 15,
+    marginRight: 10, // Space between icon and text input
   },
   input: {
-    flex: 1,
-    fontSize: 16,
+    flex: 1, // Take up remaining space
+    fontSize: 16, // Font size
+    color: '#000', // Text color
   },
 });
