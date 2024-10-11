@@ -6,10 +6,7 @@ Welcome to My React Native App! This application is built using React Native and
 
 - [Features](#features)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Development](#development)
-- [Built With](#built-with)
-- [License](#license)
+
 
 ## Features
 
