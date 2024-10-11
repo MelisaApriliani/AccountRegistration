@@ -8,7 +8,7 @@ export class OTPService {
 
   verifyOTP(otpCode: string): Promise<boolean> {
     return new Promise((resolve) => {
-      setTimeout(() => resolve(otpCode === '1234'), 1000); // Mock OTP verification
+      setTimeout(() => resolve(otpCode === '1234'), 1500); // Mock OTP verification
     });
   }
 }

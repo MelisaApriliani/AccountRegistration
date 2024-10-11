@@ -14,10 +14,6 @@ const RegistrationSuccessScreen: React.FC = () => {
 
   return (
     <View style={appStyles.container}>
-      {/* <Image
-        source={require('../../assets/blue-tick.jpg')} // Make sure to replace with your icon path
-        style={styles.icon}
-      /> */}
       <View style={styles.iconContainer}>
         <Icon name="check" size={100} color="#fff"/>
       </View>
@@ -36,7 +32,7 @@ const styles = StyleSheet.create({
     height: 150,
     marginTop: 20,
   },
-  
+
   iconContainer: {
     width: 150,
     height: 150,

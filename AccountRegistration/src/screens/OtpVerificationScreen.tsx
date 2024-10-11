@@ -1,19 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { useAppNavigation } from '../hooks/useAppNavigation';
 import { appStyles } from '../styles/styles';
+import { container } from '../services//ServiceLocator';
+import { OTPService } from '../services/OTPService';
 
 const OtpVerificationScreen = () => {
   const navigation = useAppNavigation(); 
   const [otp, setOtp] = useState(['', '', '', '']);
   const [loading, setLoading] = useState(false);
 
+  const otpService = container.get<OTPService>(OTPService);
+
+  useEffect(() => {
+    console.log("adding to otp:", otp);
+  }, [otp]);
+
   const handleVerify = () => {
     // Perform OTP verification logic here
    
-    setLoading(true);
-    navigation.navigateTo('RegistrationSuccess');
-    setLoading(false);
+    
+    const verifyOTP = async () => {
+        setLoading(true);
+        const isValid = await otpService.verifyOTP("1234");
+        if (isValid) {
+          navigation.navigateTo('RegistrationSuccess');
+        } else {
+          console.log('Default country not found');
+        }
+        setLoading(false);
+    };
+
+    verifyOTP();
+    
   };
 
   const handleBack = () => {
@@ -72,17 +91,17 @@ const OtpVerificationScreen = () => {
 
 const styles = StyleSheet.create({
   content: {
-    flex: 1, // Allow content to fill remaining space
-    justifyContent: 'center', // Center content vertically
-    alignItems: 'center', // Center content horizontally
-    width: '100%', // Ensure the content takes full width
+    flex: 1, 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    width: '100%', 
   },
   boldText: {
     fontWeight: 'bold',
     color: '#000000',
     fontSize: 14,
     textAlign: 'center',
-    marginVertical:5, // Or you can use fontFamily for specific font styles
+    marginVertical:5, 
   },
   redText:{
     color: '#FF6565',
@@ -100,7 +119,7 @@ const styles = StyleSheet.create({
     top: 20,
     left: 20,
     width: 40,
-    height: 40, // Ensure there's an area for touch
+    height: 40, 
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -108,12 +127,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
   },
-  // backIcon: {
-  //   position: 'absolute',      
-  //   top: 20,                   
-  //   left: 20,                  
-  //   width: 40,                 
-  // },
+
   otpContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
