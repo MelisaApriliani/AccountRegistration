@@ -24,14 +24,6 @@ export const appStyles = StyleSheet.create({
         textAlign: 'center',
         marginVertical: 7,
     },
-    title2: {
-        fontFamily: 'Inter',
-        fontWeight: '600',
-        fontSize: 24,
-        lineHeight: 28, // Correct line height based on font size
-        color: '#407aff',
-        marginTop: 20,
-    },
     textBody:{
         color: '#87898E',
         fontSize: 14,
@@ -52,7 +44,7 @@ export const appStyles = StyleSheet.create({
         marginTop: 20,
         marginHorizontal: 24,  // Margins on left and right
         borderRadius: 25, // Rounded corners
-      },
+    },
     redButton: {
         backgroundColor: '#FF6565',
         padding: 10,
@@ -68,5 +60,15 @@ export const appStyles = StyleSheet.create({
     },
     margin20: {
         marginTop: 20,
+    },
+    loadingContainer: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(255, 255, 255, 0.8)', // Semi-transparent background
     },
 });
