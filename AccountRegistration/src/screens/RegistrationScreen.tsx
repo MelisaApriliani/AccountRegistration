@@ -132,13 +132,13 @@ const RegistrationScreen: React.FC = () => {
            Sign in
         </Text>
       </Text>
-      (modalVisible && {
+      {modalVisible && (
         <CountryModal
           visible={modalVisible}
           onClose={() => setModalVisible(false)}
           onSelect={handleCountrySelect}
         />
-      })
+      )}
     </View>
   );
 };
