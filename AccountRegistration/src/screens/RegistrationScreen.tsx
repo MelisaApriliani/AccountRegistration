@@ -8,6 +8,7 @@ import { User } from '../models/User';
 import { Country } from '../models/Country';
 import CountryModal  from '../components/CountrySelectionModal';
 import { useAppNavigation } from '../hooks/useAppNavigation';
+import { appStyles } from '../styles/styles';
 
 const RegistrationScreen: React.FC = () => {
   const navigation = useAppNavigation(); 
@@ -67,8 +68,9 @@ const RegistrationScreen: React.FC = () => {
 
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Create an Account</Text>
+    <View style={appStyles.container}>
+      <Text style={[appStyles.title, styles.registrationTitle]}>Create an Account</Text>
+      <Text style={[appStyles.textBodySmall,styles.registrationSubTitle]}>Great to have you on board. Please start by providing us with the following info</Text>
       <FormInput
         
         value={user.lastName}
@@ -120,9 +122,11 @@ const RegistrationScreen: React.FC = () => {
         <Text style={styles.buttonText}>Show Modal</Text>
       </TouchableOpacity> */}
 
-      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-        <Text style={styles.buttonText}>Sign Up</Text>
+      <TouchableOpacity style={appStyles.positiveButton} onPress={handleSubmit}>
+        <Text style={appStyles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
+
+      <Text style={appStyles.textBodySmall}>Already have an account?</Text>
 
       <CountryModal
         visible={modalVisible}
@@ -150,35 +154,37 @@ const RegistrationScreen: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1, // Allows the container to grow and fill available space
-    // flexDirection: 'column', // Stack children vertically
-    justifyContent: 'center', // Center children vertically
-    alignItems: 'center', // Center children horizontally
-    padding: 20,
-    backgroundColor: '#fff',
+  // container: {
+  //   flex: 1, // Allows the container to grow and fill available space
+  //   // flexDirection: 'column', // Stack children vertically
+  //   justifyContent: 'center', // Center children vertically
+  //   alignItems: 'center', // Center children horizontally
+  //   padding: 20,
+  //   backgroundColor: '#fff',
+  // },
+  registrationTitle: {
+    marginTop: 50,
   },
-  title: {
-    fontSize: 24,
-    margin: 20,
-    width: 100,
-    height:20,
+  registrationSubTitle: {
+    width: 290,
+    marginBottom: 70,
+  },
 
-  },
-  button: {
-    padding: 10,
-    backgroundColor: '#007bff',
-    alignItems: 'center',
-    width: 327, // Fixed width
-    height: 50, // Fixed height
-    marginVertical:12,
-    marginHorizontal: 24, // Margins on left and right
-    borderRadius: 25, // Rounded corners
-  },
-  buttonText: {
-    color: '#fff',
-    textAlign: 'center',
-  },
+  // },
+  // button: {
+  //   padding: 10,
+  //   backgroundColor: '#007bff',
+  //   alignItems: 'center',
+  //   width: 327, // Fixed width
+  //   height: 50, // Fixed height
+  //   marginVertical:12,
+  //   marginHorizontal: 24, // Margins on left and right
+  //   borderRadius: 25, // Rounded corners
+  // },
+  // buttonText: {
+  //   color: '#fff',
+  //   textAlign: 'center',
+  // },
   modalBackground: {
     flex: 1,
     backgroundColor: 'red', // Semi-transparent background to cover screen
