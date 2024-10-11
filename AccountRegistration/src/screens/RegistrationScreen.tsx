@@ -126,7 +126,11 @@ const RegistrationScreen: React.FC = () => {
         <Text style={appStyles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
 
-      <Text style={appStyles.textBodySmall}>Already have an account?</Text>
+      <Text style={[appStyles.textBodySmall, appStyles.margin20]}>Already have an account?{" "} 
+        <Text style={styles.signInText} onPress={handleSubmit}>
+           Sign in
+        </Text>
+      </Text>
 
       <CountryModal
         visible={modalVisible}
@@ -169,22 +173,11 @@ const styles = StyleSheet.create({
     width: 290,
     marginBottom: 70,
   },
-
-  // },
-  // button: {
-  //   padding: 10,
-  //   backgroundColor: '#007bff',
-  //   alignItems: 'center',
-  //   width: 327, // Fixed width
-  //   height: 50, // Fixed height
-  //   marginVertical:12,
-  //   marginHorizontal: 24, // Margins on left and right
-  //   borderRadius: 25, // Rounded corners
-  // },
-  // buttonText: {
-  //   color: '#fff',
-  //   textAlign: 'center',
-  // },
+  signInText: {
+    color: '#407AFF',
+    fontSize: 13,
+    textAlign: 'center',
+  },
   modalBackground: {
     flex: 1,
     backgroundColor: 'red', // Semi-transparent background to cover screen

@@ -66,4 +66,7 @@ export const appStyles = StyleSheet.create({
         color: '#fff',
         textAlign: 'center',
     },
+    margin20: {
+        marginTop: 20,
+    },
 });
