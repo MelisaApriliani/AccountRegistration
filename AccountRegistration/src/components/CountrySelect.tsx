@@ -41,6 +41,7 @@ const CountrySelect: React.FC<{ onSelect: (country: Country) => void }> = ({ onS
     );
 
     const handleSelect = (country: Country) => {
+        console.log("country is selected"+ country)
         setSelectedCountry(country);
         onSelect(country);
     };
@@ -83,24 +84,27 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         alignItems: 'center',
-        width:'100%', // Fixed width
-        height: 50, // Fixed height
-        borderRadius: 10, // Rounded corners
-        borderWidth: 1, // Border thickness
-        borderColor: '#DADADA', // Border color
-        backgroundColor: '#F3F2F5', // Background color of the input field
-        paddingHorizontal: 10, // Padding inside the container
+        width:'100%', 
+        height: 50, 
+        borderRadius: 10, 
+        borderWidth: 1, 
+        borderColor: '#DADADA', 
+        backgroundColor: '#F3F2F5',
+        paddingHorizontal: 10,
         marginVertical: 20,
       },
       icon: {
-        width: 15, // Adjust icon size as needed
+        width: 15,
         height: 15,
-        marginRight: 25, // Space between icon and text input
+        marginRight: 25, 
       },
     searchInput: {
-        flex: 1, // Take up remaining space
-        fontSize: 13, // Font size
+        flex: 1, 
+        fontSize: 13, 
         color: '#86878D',
+        marginLeft: 20,
+        borderWidth: 0,
+        borderColor: 'transparent',
     },
     countryItem: {
         flexDirection: 'row',
@@ -113,22 +117,22 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     countryName: {
-        flex: 1, // This allows the name to take available space
+        flex: 1, 
     },
     radioButton: {
         width: 20,
         height: 20,
         borderRadius: 10,
         borderWidth: 2,
-        borderColor: '#407aff', // Border color for unselected
+        borderColor: '#407aff',
         backgroundColor: 'transparent',
     },
     selectedRadioButton: {
-        backgroundColor: '#407aff', // Fill color for selected
+        backgroundColor: '#407aff', 
     },
     separator: {
         height: 1,
-        backgroundColor: '#DADADA', // Color for separator
+        backgroundColor: '#DADADA', 
         width: '100%',
     },
 });

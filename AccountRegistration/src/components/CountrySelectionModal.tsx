@@ -13,12 +13,12 @@ interface CountryModalProps {
 const CountryModal: React.FC<CountryModalProps> = ({ visible, onClose, onSelect  }) => {
     useEffect(() => {
         console.log("ENTERING MODAL COMPONENT");
-      }, );
+      },[] );
 
   return (
     <Modal
       animationType="slide"
-      transparent={false}
+      transparent={true}
       visible={visible}
       onRequestClose={onClose} // Close modal when back button is pressed
     >
@@ -39,17 +39,17 @@ const CountryModal: React.FC<CountryModalProps> = ({ visible, onClose, onSelect 
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, // Takes up the whole screen
-    justifyContent: 'center', // Centers content vertically
+    flex: 1, 
+    justifyContent: 'center',
     alignItems: 'center', 
     padding: 20,
     backgroundColor: '#fff',
   },
   content: {
-    flex: 1, // Allow content to fill remaining space
-    justifyContent: 'center', // Center content vertically
-    alignItems: 'center', // Center content horizontally
-    width: '100%', // Ensure the content takes full width
+    flex: 1, 
+    justifyContent: 'center',
+    alignItems: 'center', 
+    width: '100%',
   },
   touchableArea: {
     position: 'absolute',
