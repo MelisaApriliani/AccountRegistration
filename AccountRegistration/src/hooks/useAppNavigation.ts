@@ -11,7 +11,11 @@ export const useAppNavigation = () => {
     navigation.navigate(route);
   };
 
+  const goBack = () => {
+    navigation.goBack();
+  };
+
   return {
-    navigateTo,
+    navigateTo,goBack
   };
 };
