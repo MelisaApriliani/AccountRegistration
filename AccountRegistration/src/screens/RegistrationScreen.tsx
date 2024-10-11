@@ -116,13 +116,23 @@ const RegistrationScreen: React.FC = () => {
         />
       </TouchableOpacity>
       {/* <Button title="Sign Up" onPress={handleSubmit} /> */}
-      <TouchableOpacity style={styles.button} onPress={showModal}>
+      {/* <TouchableOpacity style={styles.button} onPress={showModal}>
         <Text style={styles.buttonText}>Show Modal</Text>
+      </TouchableOpacity> */}
+
+      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+        <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
+
+      <CountryModal
+        visible={modalVisible}
+        onClose={() => setModalVisible(false)}
+        onSelect={handleCountrySelect}
+      />
 
    
 
-      <Modal
+      {/* <Modal
         visible={modalVisible}
         animationType="slide"
         transparent={false}
@@ -134,7 +144,7 @@ const RegistrationScreen: React.FC = () => {
           <Button title="Close" onPress={() => setModalVisible(false)} />
         </View>
         </View>
-      </Modal>
+      </Modal> */}
     </View>
   );
 };

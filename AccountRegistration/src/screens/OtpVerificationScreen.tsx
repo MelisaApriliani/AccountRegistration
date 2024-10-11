@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { useAppNavigation } from '../hooks/useAppNavigation';
 
 const OtpVerificationScreen = () => {
+  const navigation = useAppNavigation(); 
   const [otp, setOtp] = useState(['', '', '', '']);
 
   const handleVerify = () => {
     // Perform OTP verification logic here
-    // navigation.navigate('Loading');
+    navigation.navigateTo('RegistrationSuccess');
   };
 
   return (
