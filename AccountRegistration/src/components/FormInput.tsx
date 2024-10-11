@@ -24,7 +24,10 @@ export const FormInput: React.FC<FormInputProps> = ({
        style={styles.input}
        placeholderTextColor="#DADADA"
        value={value}
-       onChangeText={onChangeText}
+       onChangeText={(text) => {
+        console.log('TextInput onChangeText:', text);
+        onChangeText(text);
+      }}
        placeholder={placeholder} // Pass down all the props like placeholder, value, onChangeText, etc.
      />
    </View>
@@ -35,7 +38,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: 327, // Fixed width
+    width: 327,  // Fixed width
     height: 50, // Fixed height
     marginVertical:12,
     marginHorizontal: 24, // Margins on left and right
@@ -43,11 +46,11 @@ const styles = StyleSheet.create({
     borderWidth: 1, // Border thickness
     borderColor: '#DADADA', // Border color
     backgroundColor: '#fff', // Background color of the input field
-    paddingHorizontal: 20, // Padding inside the container
+    paddingHorizontal: 10, // Padding inside the container
   },
   icon: {
-    width: 15, // Adjust icon size as needed
-    height: 15,
+    width: 20, // Adjust icon size as needed
+    height: 20,
     marginRight: 10, // Space between icon and text input
   },
   input: {

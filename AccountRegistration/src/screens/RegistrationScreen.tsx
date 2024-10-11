@@ -38,9 +38,9 @@ const RegistrationScreen: React.FC = () => {
         } else {
           console.log('Default country not found');
         }
-      };
+    };
   
-      fetchDefaultCountry();
+    fetchDefaultCountry();
   }, [countryService]);
 
   useEffect(() => {
@@ -48,7 +48,12 @@ const RegistrationScreen: React.FC = () => {
   }, [modalVisible]);
 
   const handleInputChange = (field: keyof User, value: string) => {
-    setUser({ ...user, [field]: value });
+    console.log("handling input change")
+    console.log(`Field: ${field}, Value: ${value}`);
+    setUser((prevUser) => ({
+      ...prevUser,
+      [field]: value,
+    }));
   };
 
   const handleSubmit = async () => {
@@ -62,19 +67,19 @@ const RegistrationScreen: React.FC = () => {
   };
 
   const showModal = async () => {
-   
+    console.log("showing modal:", modalVisible);
     setModalVisible(true);
   };
 
 
   return (
     <View style={appStyles.container}>
-      <Text style={[appStyles.title, styles.registrationTitle]}>Create an Account</Text>
+      <Text style={[appStyles.title, { marginTop: 50,}]}>Create an Account</Text>
       <Text style={[appStyles.textBodySmall,styles.registrationSubTitle]}>Great to have you on board. Please start by providing us with the following info</Text>
       <FormInput
         
-        value={user.lastName}
-        onChangeText={(value) => handleInputChange('lastName', value)}
+        value={user.firstName}
+        onChangeText={(value) => handleInputChange('firstName', value)}
         iconSource={require('../../assets/user.png')}
         placeholder='First Name'
       />
@@ -117,10 +122,6 @@ const RegistrationScreen: React.FC = () => {
           
         />
       </TouchableOpacity>
-      {/* <Button title="Sign Up" onPress={handleSubmit} /> */}
-      {/* <TouchableOpacity style={styles.button} onPress={showModal}>
-        <Text style={styles.buttonText}>Show Modal</Text>
-      </TouchableOpacity> */}
 
       <TouchableOpacity style={appStyles.positiveButton} onPress={handleSubmit}>
         <Text style={appStyles.buttonText}>Sign Up</Text>
@@ -131,44 +132,18 @@ const RegistrationScreen: React.FC = () => {
            Sign in
         </Text>
       </Text>
-
-      <CountryModal
-        visible={modalVisible}
-        onClose={() => setModalVisible(false)}
-        onSelect={handleCountrySelect}
-      />
-
-   
-
-      {/* <Modal
-        visible={modalVisible}
-        animationType="slide"
-        transparent={false}
-        onRequestClose={() => setModalVisible(false)} // For Android back button
-      >
-        <View style={styles.modalBackground}>
-        <View style={styles.modalContent}>
-          <Text>Select a Country</Text>
-          <Button title="Close" onPress={() => setModalVisible(false)} />
-        </View>
-        </View>
-      </Modal> */}
+      (modalVisible && {
+        <CountryModal
+          visible={modalVisible}
+          onClose={() => setModalVisible(false)}
+          onSelect={handleCountrySelect}
+        />
+      })
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  // container: {
-  //   flex: 1, // Allows the container to grow and fill available space
-  //   // flexDirection: 'column', // Stack children vertically
-  //   justifyContent: 'center', // Center children vertically
-  //   alignItems: 'center', // Center children horizontally
-  //   padding: 20,
-  //   backgroundColor: '#fff',
-  // },
-  registrationTitle: {
-    marginTop: 50,
-  },
   registrationSubTitle: {
     width: 290,
     marginBottom: 70,
@@ -180,9 +155,9 @@ const styles = StyleSheet.create({
   },
   modalBackground: {
     flex: 1,
-    backgroundColor: 'red', // Semi-transparent background to cover screen
-    justifyContent: 'center', // Center modal vertically
-    alignItems: 'center', // Center modal horizontally
+    backgroundColor: 'red', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
   },
   modalContent: {
     width: 300,
