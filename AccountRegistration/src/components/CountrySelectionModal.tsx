@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity, Modal, StyleSheet } from 'react-native';
 import CountrySelect from './CountrySelect'; // Import your country search component
 import { Country } from '../models/Country';
+import { appStyles } from '../styles/styles';
 
 interface CountryModalProps {
   visible: boolean;
@@ -21,17 +22,16 @@ const CountryModal: React.FC<CountryModalProps> = ({ visible, onClose, onSelect 
       visible={visible}
       onRequestClose={onClose} // Close modal when back button is pressed
     >
-      <View style={styles.container}>
-        {/* Title */}
-        <Text style={styles.title}>Select Country</Text>
-
-        {/* Cancel Button */}
-        <TouchableOpacity onPress={onClose} style={styles.cancelButton}>
-          <Text style={styles.cancelText}>Cancel</Text>
+      <View style={[appStyles.container, {justifyContent: 'flex-start'}]}>
+          
+        <TouchableOpacity onPress={onClose} style={styles.touchableArea}>
+            <Text style={[appStyles.textBody, {textAlign: 'left',color: '#407AFF'}]}>Cancel</Text>
         </TouchableOpacity>
 
-        {/* Country List Search Component */}
-        <CountrySelect onSelect={onSelect}/>
+        <View style={styles.content}>
+          <Text style={appStyles.title}>Select Country</Text>
+          <CountrySelect onSelect={onSelect}/>
+        </View>
       </View>
     </Modal>
   );
@@ -45,18 +45,28 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#fff',
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
+  content: {
+    flex: 1, // Allow content to fill remaining space
+    justifyContent: 'center', // Center content vertically
+    alignItems: 'center', // Center content horizontally
+    width: '100%', // Ensure the content takes full width
+  },
+  touchableArea: {
+    position: 'absolute',
+    top: 20,
+    left: 20,
+    width: '100%',
+    height: 40, // Ensure there's an area for touch
+    justifyContent: 'center',
+    alignItems: 'flex-start',
   },
   cancelButton: {
     alignSelf: 'flex-start',
     marginBottom: 20,
   },
-  cancelText: {
-    color: 'blue',
-    fontSize: 18,
+  countrySelect: {
+    width: '100%', // Ensure it takes the full width
+    paddingHorizontal: 20, // Add horizontal padding
   },
 });
 

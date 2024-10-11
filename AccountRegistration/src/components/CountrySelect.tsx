@@ -4,6 +4,8 @@ import { View, TextInput, FlatList, TouchableOpacity, Text, StyleSheet, Image} f
 import { CountryService } from '../services/CountryService';
 import { container } from '../services//ServiceLocator';
 import { Country } from '../models/Country';
+import { appStyles } from '../styles/styles';
+import Icon from 'react-native-vector-icons/FontAwesome';
 // Adjust the import based on your folder structure
 
 
@@ -48,19 +50,23 @@ const CountrySelect: React.FC<{ onSelect: (country: Country) => void }> = ({ onS
     }
 
     return (
-        <View style={styles.container}>
-            <TextInput
-                style={styles.searchInput}
-                placeholder="Search Country"
-                value={search}
-                onChangeText={setSearch}
-            />
+        <View style={{flex:1, width:'100%'}}>
+            <View style={styles.container}>
+                <Icon name="search" size={15} color="#86878D"/>
+                <TextInput
+                    style={styles.searchInput}
+                    placeholder="Search Country"
+                    value={search}
+                    onChangeText={setSearch}
+                />
+            </View>
+            <Text style={[appStyles.textBody, {textAlign: 'left', marginBottom:10}]}>Flags & Names</Text>
             <FlatList
                 data={filteredCountries}
                 keyExtractor={item => item.code}
                 renderItem={({ item }) => (
                     <TouchableOpacity onPress={() => handleSelect(item)} style={styles.countryItem}>
-                        <Image source={{ uri: item.flagUrl }} style={styles.countryFlag} /> 
+                        <Image source={item.flagUrl} style={styles.countryFlag} /> 
                         <Text style={styles.countryName}>{item.name}</Text>
                         <TouchableOpacity
                             style={[styles.radioButton, selectedCountry?.id === item.id && styles.selectedRadioButton]}
@@ -75,15 +81,26 @@ const CountrySelect: React.FC<{ onSelect: (country: Country) => void }> = ({ onS
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        padding: 10,
-    },
+        flexDirection: 'row',
+        alignItems: 'center',
+        width:'100%', // Fixed width
+        height: 50, // Fixed height
+        borderRadius: 10, // Rounded corners
+        borderWidth: 1, // Border thickness
+        borderColor: '#DADADA', // Border color
+        backgroundColor: '#F3F2F5', // Background color of the input field
+        paddingHorizontal: 10, // Padding inside the container
+        marginVertical: 20,
+      },
+      icon: {
+        width: 15, // Adjust icon size as needed
+        height: 15,
+        marginRight: 25, // Space between icon and text input
+      },
     searchInput: {
-        borderWidth: 1,
-        borderColor: '#DADADA',
-        borderRadius: 10,
-        padding: 10,
-        marginBottom: 10,
+        flex: 1, // Take up remaining space
+        fontSize: 13, // Font size
+        color: '#86878D',
     },
     countryItem: {
         flexDirection: 'row',
