@@ -1,5 +1,5 @@
 export type RootStackParamList = {
-    Registration: undefined;
+    Registration: { resetUser?: boolean };
     OTPVerification: undefined;
     RegistrationSuccess:undefined;
 };

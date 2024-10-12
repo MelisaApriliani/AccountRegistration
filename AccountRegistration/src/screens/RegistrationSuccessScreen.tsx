@@ -9,7 +9,7 @@ const RegistrationSuccessScreen: React.FC = () => {
 
   const handleLogout = () => {
    
-    navigation.navigateTo('Registration'); 
+    navigation.navigateTo('Registration', { resetUser: true }); 
   };
 
   return (

@@ -11,14 +11,14 @@ interface CountryModalProps {
 }
 
 const CountryModal: React.FC<CountryModalProps> = ({ visible, onClose, onSelect  }) => {
-    useEffect(() => {
-        console.log("ENTERING MODAL COMPONENT");
-      },[] );
+  useEffect(() => {
+    console.log("ENTERING MODAL COMPONENT");
+  },[] );
 
   return (
     <Modal
       animationType="slide"
-      transparent={true}
+      transparent={false}
       visible={visible}
       onRequestClose={onClose} // Close modal when back button is pressed
     >

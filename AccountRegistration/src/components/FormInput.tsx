@@ -4,10 +4,11 @@ import { View, TextInput, Text, StyleSheet, ImageSourcePropType, Image } from 'r
 
 interface FormInputProps {
   value: string;
-  onChangeText: (text: string) => void;
+  onChangeText?: (text: string) => void;
   iconSource: ImageSourcePropType ;
   placeholder?: string;
   secureTextEntry?: boolean;
+  editable?: boolean;
 }
 
 export const FormInput: React.FC<FormInputProps> = ({
@@ -16,18 +17,22 @@ export const FormInput: React.FC<FormInputProps> = ({
   iconSource,
   placeholder,
   secureTextEntry = false,
+  editable = true,
 }) => {
   return (
     <View style={styles.container}>
-     <Image source={iconSource} style={styles.icon} />
+     <Image source={iconSource} style={styles.icon} resizeMode="contain"  />
      <TextInput
        style={styles.input}
        placeholderTextColor="#DADADA"
        value={value}
        onChangeText={(text) => {
         console.log('TextInput onChangeText:', text);
-        onChangeText(text);
+        if (onChangeText) {
+          onChangeText(text);
+        }
       }}
+       editable = {editable}
        placeholder={placeholder} // Pass down all the props like placeholder, value, onChangeText, etc.
      />
    </View>
@@ -49,8 +54,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10, // Padding inside the container
   },
   icon: {
-    width: 20, // Adjust icon size as needed
-    height: 20,
+    width: 24, // Adjust icon size as needed
+    height: 24,
     marginRight: 10, // Space between icon and text input
   },
   input: {

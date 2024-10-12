@@ -41,7 +41,7 @@ const CountrySelect: React.FC<{ onSelect: (country: Country) => void }> = ({ onS
     );
 
     const handleSelect = (country: Country) => {
-        console.log("country is selected"+ country)
+        console.log("country is selected", country)
         setSelectedCountry(country);
         onSelect(country);
     };
@@ -69,7 +69,7 @@ const CountrySelect: React.FC<{ onSelect: (country: Country) => void }> = ({ onS
                     <TouchableOpacity onPress={() => handleSelect(item)} style={styles.countryItem}>
                         <Image source={item.flagUrl} style={styles.countryFlag} /> 
                         <Text style={styles.countryName}>{item.name}</Text>
-                        <TouchableOpacity
+                        <View
                             style={[styles.radioButton, selectedCountry?.id === item.id && styles.selectedRadioButton]}
                         />
                     </TouchableOpacity>
@@ -92,12 +92,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#F3F2F5',
         paddingHorizontal: 10,
         marginVertical: 20,
-      },
-      icon: {
+    },
+    icon: {
         width: 15,
         height: 15,
         marginRight: 25, 
-      },
+    },
     searchInput: {
         flex: 1, 
         fontSize: 13, 
@@ -110,6 +110,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         paddingVertical: 10,
+        paddingHorizontal: 15,
+        backgroundColor: 'white',
     },
     countryFlag: {
         width: 40,
