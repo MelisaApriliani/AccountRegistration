@@ -26,3 +26,4 @@ To get started with this project, follow these steps:
    cd your-repo-name
    npm install
    npm start (or "npx expo start")
+   npm test (to run the unit test)

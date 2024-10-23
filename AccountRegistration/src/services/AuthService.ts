@@ -7,12 +7,12 @@ export class AuthService {
 
   register(user: User): Promise<void> {
     this.registeredUser = user;
-    return new Promise((resolve) => setTimeout(resolve, 1000)); // Mock API call
+    return new Promise((resolve) => setTimeout(resolve, 1000)); 
   }
 
   logout(): Promise<void> {
     this.registeredUser = null;
-    return new Promise((resolve) => setTimeout(resolve, 1000)); // Mock API call
+    return new Promise((resolve) => setTimeout(resolve, 1000)); 
   }
 
   getUser(): User | null {

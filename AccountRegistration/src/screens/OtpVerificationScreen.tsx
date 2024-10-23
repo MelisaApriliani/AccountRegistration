@@ -17,9 +17,7 @@ const OtpVerificationScreen = () => {
   }, [otp]);
 
   const handleVerify = () => {
-    // Perform OTP verification logic here
    
-    
     const verifyOTP = async () => {
         setLoading(true);
         const isValid = await otpService.verifyOTP("1234");
@@ -44,7 +42,7 @@ const OtpVerificationScreen = () => {
     <View style={[appStyles.container, {justifyContent: 'flex-start'}]}>
       <TouchableOpacity style={styles.touchableArea} onPress={handleBack}>
         <Image
-          source={require('../../assets/arrow-back.png')} // Make sure to replace this with your image path
+          source={require('../../assets/arrow-back.png')} 
           style={styles.backIcon}
         />
       </TouchableOpacity>

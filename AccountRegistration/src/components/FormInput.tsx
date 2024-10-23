@@ -21,7 +21,7 @@ export const FormInput: React.FC<FormInputProps> = ({
 }) => {
   return (
     <View style={styles.container}>
-     <Image source={iconSource} style={styles.icon} resizeMode="contain"  />
+     <Image source={iconSource} style={styles.icon} resizeMode="contain" testID="form-input-icon" />
      <TextInput
        style={styles.input}
        placeholderTextColor="#DADADA"
@@ -33,7 +33,7 @@ export const FormInput: React.FC<FormInputProps> = ({
         }
       }}
        editable = {editable}
-       placeholder={placeholder} // Pass down all the props like placeholder, value, onChangeText, etc.
+       placeholder={placeholder} 
      />
    </View>
   );
@@ -43,24 +43,24 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: 327,  // Fixed width
-    height: 50, // Fixed height
+    width: 327,  
+    height: 50, 
     marginVertical:12,
-    marginHorizontal: 24, // Margins on left and right
-    borderRadius: 10, // Rounded corners
-    borderWidth: 1, // Border thickness
-    borderColor: '#DADADA', // Border color
-    backgroundColor: '#fff', // Background color of the input field
-    paddingHorizontal: 10, // Padding inside the container
+    marginHorizontal: 24, 
+    borderRadius: 10, 
+    borderWidth: 1, 
+    borderColor: '#DADADA', 
+    backgroundColor: '#fff', 
+    paddingHorizontal: 10, 
   },
   icon: {
-    width: 24, // Adjust icon size as needed
+    width: 24, 
     height: 24,
-    marginRight: 10, // Space between icon and text input
+    marginRight: 10, 
   },
   input: {
-    flex: 1, // Take up remaining space
-    fontSize: 16, // Font size
-    color: '#000', // Text color
+    flex: 1, 
+    fontSize: 16, 
+    color: '#000', 
   },
 });

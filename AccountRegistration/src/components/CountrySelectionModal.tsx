@@ -20,7 +20,7 @@ const CountryModal: React.FC<CountryModalProps> = ({ visible, onClose, onSelect 
       animationType="slide"
       transparent={false}
       visible={visible}
-      onRequestClose={onClose} // Close modal when back button is pressed
+      onRequestClose={onClose} 
     >
       <View style={[appStyles.container, {justifyContent: 'flex-start'}]}>
           
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     top: 20,
     left: 20,
     width: '100%',
-    height: 40, // Ensure there's an area for touch
+    height: 40, 
     justifyContent: 'center',
     alignItems: 'flex-start',
   },
@@ -65,8 +65,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   countrySelect: {
-    width: '100%', // Ensure it takes the full width
-    paddingHorizontal: 20, // Add horizontal padding
+    width: '100%',
+    paddingHorizontal: 20, 
   },
 });
 

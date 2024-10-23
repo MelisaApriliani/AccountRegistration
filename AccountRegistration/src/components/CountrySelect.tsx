@@ -1,4 +1,4 @@
-// src/components/CountrySelect.tsx
+import 'reflect-metadata';
 import React, { useEffect, useState } from 'react';
 import { View, TextInput, FlatList, TouchableOpacity, Text, StyleSheet, Image} from 'react-native';
 import { CountryService } from '../services/CountryService';
@@ -6,13 +6,12 @@ import { container } from '../services//ServiceLocator';
 import { Country } from '../models/Country';
 import { appStyles } from '../styles/styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
-// Adjust the import based on your folder structure
 
 
 const CountrySelect: React.FC<{ onSelect: (country: Country) => void }> = ({ onSelect }) => {
     const [search, setSearch] = useState('');
     const [countries, setCountries] = useState<Country[]>([]);
-    const [loading, setLoading] = useState(true); // Loading state for fetching countries
+    const [loading, setLoading] = useState(true); 
     const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
 
     const countryService = container.get<CountryService>(CountryService);
@@ -20,7 +19,7 @@ const CountrySelect: React.FC<{ onSelect: (country: Country) => void }> = ({ onS
     useEffect(() => {
         const fetchCountries = async () => {
             try {
-                const countryList = await countryService.getCountries(); // Fetch countries from the service
+                const countryList = await countryService.getCountries();  
                 if (countryList) {
                     setCountries(countryList);
                 } else {
@@ -47,7 +46,7 @@ const CountrySelect: React.FC<{ onSelect: (country: Country) => void }> = ({ onS
     };
 
     if (loading) {
-        return <Text>Loading...</Text>; // Optionally handle loading state
+        return <Text>Loading...</Text>; 
     }
 
     return (
